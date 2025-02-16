@@ -7,8 +7,12 @@ from player import get_mocked_player_profile
 
 def find_player_campaign(player_id):
     """Retrieve the player's profile, match it with active campaigns, and update it if necessary."""
-    # todo: ajout player_id check existe
-    player_profile = get_mocked_player_profile(player_id)
+
+    try:
+        player_profile = get_mocked_player_profile(player_id)
+    except KeyError:
+        raise ValueError(f"Player with ID {player_id} not found in the mock database.")
+    
     campaigns = get_mocked_campaigns()
 
     for campaign in campaigns:
