@@ -1,4 +1,14 @@
-def get_mocked_player_profile(player_id):
+from typing import Dict, Any
+
+def get_mocked_player_profile(player_id: str) -> Dict[str, Any]:
+    """
+    Mock function to retrieve and return player's profile.
+    Args:
+        player_id (str): ID of the player.
+    
+    Returns:
+        Dict[str, Any]: Player's profile data.
+    """
     return {
         "player_id": player_id,
         "credential": "apple_credential",

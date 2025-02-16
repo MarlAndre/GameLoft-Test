@@ -2,11 +2,23 @@
 Handles player profile retrieval, campaign fetching, and matching logic.  
 """
 
+from typing import Dict, Any
 from campaign import get_mocked_campaigns
 from player import get_mocked_player_profile
 
-def find_player_campaign(player_id):
-    """Retrieve the player's profile, match it with active campaigns, and update it if necessary."""
+def find_player_campaign(player_id: str) -> Dict[str, Any]:
+    """
+    Retrieve the player's profile, match it with active campaigns, and update it if necessary.
+    
+    Args:
+        player_id (str): The unique identifier of the player.
+
+    Returns:
+        Dict[str, Any]: The updated player profile with matched campaigns.
+
+    Raises:
+        ValueError: If the player ID is not found in the mock database.
+    """
 
     try:
         player_profile = get_mocked_player_profile(player_id)
@@ -44,3 +56,11 @@ def find_player_campaign(player_id):
         # update players active campaign
         player_profile["active_campaigns"].append(campaign['name'])
     return player_profile
+
+
+
+# Mock function has been called with player id
+
+player_id = "97983be2-98b7-11e7-90cf-082e5f28d836"
+updated_profile = find_player_campaign(player_id)
+print("Player active campaign: ", updated_profile['active_campaigns'])

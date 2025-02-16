@@ -1,4 +1,11 @@
-def get_mocked_campaigns():
+from typing import Dict, List, Any
+
+def get_mocked_campaigns() -> List[Dict[str, Any]]:
+    """
+    Mock function to retrieve list of campaigns.
+    Returns:
+        List[Dict[str, Any]]: A list of active campaigns.
+    """
     return [
         {
             "game": "mygame",
